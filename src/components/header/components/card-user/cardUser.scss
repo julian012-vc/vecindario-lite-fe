@@ -1,0 +1,26 @@
+.card-user__container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  &--logo {
+    height: 46px;
+    width: 46px;
+    border-radius: 25px;
+  }
+
+  &--name {
+    min-width: 200px;
+    margin: auto 1px;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: #333;
+  }
+
+  &--icon {
+    align-self: center;
+    width: 10px;
+    font-weight: bold;
+  }
+}
