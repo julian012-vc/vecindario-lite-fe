@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingUp = () => {
   return (
-    <div>
+    <div className="sing-up__container">
       SingUp
     </div>
   )
