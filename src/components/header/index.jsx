@@ -8,7 +8,8 @@ import Dropdown from '../dropdown/dropdown'
 import SearchInput from '../search-input'
 
 import { getValueFromLocalStorage } from '../../helpers'
-import { AUTH_TOKEN, LOGO_URL, SEACH_ICON, SEARCH_PROJECT_PLACEHOLDER } from '../../constants'
+import { AUTH_TOKEN, LOGO_URL, SEARCH_PROJECT_PLACEHOLDER } from '../../constants'
+import * as Icons from '../../constants/icons';
 import './index.scss'
 import UnloggedDropdown from './components/unlogged-dropdown/unloggedDropdown'
 
@@ -39,7 +40,7 @@ const Header = () => {
                 </div>
                 <div className="input__container">
                    <SearchInput
-                        iconRight={SEACH_ICON}
+                        iconRight={Icons.SEACH_ICON}
                         placeholder={SEARCH_PROJECT_PLACEHOLDER}
                     />
                 </div>
