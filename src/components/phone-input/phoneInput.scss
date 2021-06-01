@@ -1,0 +1,25 @@
+@import "src/styles/variables";
+
+.phone-input__conatiner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    background-color: $gray-secondary;
+    color: $gray-primary !important;
+    border: none;
+    height: 40px;
+    border-radius: 25px;
+    outline: none;
+  }
+
+  input:hover {
+    border: none;
+  }
+
+  input::placeholder {
+    color: #c1c1c1;
+    padding-left: 15px;
+  }
+}
