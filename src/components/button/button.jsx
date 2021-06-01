@@ -1,31 +1,35 @@
-import React from 'react'
-
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import './button.scss'
+import './button.scss';
 
-const Button = ({ text, background, onHoverColor }) => {
+const StyledButton = styled.button.attrs(props => ({ type: props.type }))`
+  background-color: ${props => props.background};
+  &:hover {
+    background-color: ${props => props.hoverColor};
+  }
+`;
 
-    const ButtonWithHover = styled.button`
-        background-color: ${background};
-        :hover {
-            background-color: ${onHoverColor}
-        }
-
-    `
-
-    return (
-        <ButtonWithHover className="button__container">
-            { text }
-        </ButtonWithHover>
-    )
-}
+const Button = ({ text, background, onHoverColor, type = 'text', isLoading = false }) => {
+  return (
+    <StyledButton
+      background={background}
+      hoverColor={onHoverColor}
+      type={type}
+      className={`button__container ` + (isLoading ? 'button is-loading' : '')}
+    >
+      {text}
+    </StyledButton>
+  );
+};
 
 Button.prototype = {
-    text: PropTypes.string,
-    background: PropTypes.string,
-    onHoverColor: PropTypes.string
-}
+  text: PropTypes.string,
+  background: PropTypes.string,
+  onHoverColor: PropTypes.string,
+  type: PropTypes.string,
+  isLoading: PropTypes.bool,
+};
 
-export default Button
+export default Button;

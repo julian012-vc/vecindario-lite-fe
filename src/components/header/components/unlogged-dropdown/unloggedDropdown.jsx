@@ -1,5 +1,7 @@
 import React from 'react'
-import { SEACH_ICON, SEARCH_PROJECT_PLACEHOLDER, UNLOGGED_PRICTURE_URL } from '../../../../constants'
+import{ SEARCH_PROJECT_PLACEHOLDER, UNLOGGED_PRICTURE_URL } from '../../../../constants'
+import * as Icons from '../../../../constants/icons';
+
 import SearchInput from '../../../search-input'
 import BoxAuth from '../box-auth/boxAuth'
 
@@ -26,7 +28,7 @@ const UnloggedDropdown = () => {
             </div>
             <div className="unlogged-dropdown__container--search">
                 <SearchInput
-                    iconRight={SEACH_ICON}
+                    iconRight={Icons.SEACH_ICON}
                     placeholder={SEARCH_PROJECT_PLACEHOLDER}
                 />
             </div>
