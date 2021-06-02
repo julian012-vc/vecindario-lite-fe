@@ -1,27 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const signUpSlice = createSlice({
-  name: 'auth/sign-up',
+export const signInSlice = createSlice({
+  name: 'auth/sign-in',
   initialState: {
     data: {},
     isLoading: false,
     errors: {},
   },
   reducers: {
-    signUp: (state, action) => {
+    signIn: (state, action) => {
       state.data = action.payload;
       state.isLoading = true;
     },
-    signUpWithErrors: (state, action) => {
+    signInWithErrors: (state, action) => {
       state.errors = action.payload;
       state.isLoading = false;
     },
-    signUpSuccess: state => {
+    signInSuccess: state => {
       state.data = {};
       state.errors = {};
       state.isLoading = false;
     },
-    cleanSignUp: state => {
+    cleanSignIn: state => {
       state.data = {};
       state.isLoading = false;
       state.errors = {};
@@ -29,6 +29,6 @@ export const signUpSlice = createSlice({
   },
 });
 
-export const { signUp, signUpWithErrors, signUpSuccess, cleanSignUp } = signUpSlice.actions;
+export const { cleanSignIn, signIn, signInSuccess, signInWithErrors } = signInSlice.actions;
 
-export default signUpSlice.reducer;
+export default signInSlice.reducer;

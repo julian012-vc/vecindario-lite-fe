@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
-import './input.scss';
 import { EYE_SLASH_ICON } from '../../constants/icons';
-import { selectSignUpErrors } from '../../redux/selectors/auth.selector';
+import './input.scss';
 
 const PASSWORD_TYPE = 'password';
 const TEXT_TYPE = 'text';
 
-const Input = ({ placeholder, icon, isPassword = false, formValue, register }) => {
+const Input = ({ placeholder, icon, isPassword = false, formValue, register, errorSelector }) => {
   const [showPassword, setShowPassord] = useState(isPassword);
-
-  const error = useSelector(selectSignUpErrors);
 
   return (
     <div className='custom-input__container'>
@@ -30,7 +26,7 @@ const Input = ({ placeholder, icon, isPassword = false, formValue, register }) =
           />
         </span>
       </p>
-      <div className='custom-input__container--error'>{error[formValue]}</div>
+      <div className='custom-input__container--error'>{errorSelector[formValue]}</div>
     </div>
   );
 };
@@ -41,6 +37,7 @@ Input.propTypes = {
   isPassword: PropTypes.bool,
   formValue: PropTypes.string,
   register: PropTypes.any,
+  errorSelector: PropTypes.any,
 };
 
 export default Input;

@@ -62,16 +62,20 @@
     &--comeback {
       margin-top: 10px;
       color: $gray-primary;
+      display: flex;
+      justify-content: center;
 
       .link {
 
         text-decoration: underline;
         text-decoration-color: currentColor;
         text-decoration-style: solid;
+        cursor: pointer;
 
         &__sing-in {
           margin: 0 10px;
           font-weight: bold;
+          color: $primary-blue;
         }
 
         &__home {
