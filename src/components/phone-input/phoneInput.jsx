@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
-import 'react-phone-number-input/style.css';
+import PropTypes from 'prop-types';
+
 import Input from 'react-phone-number-input';
-import { useSelector } from 'react-redux';
-import { selectSignUpErrors } from '../../redux/selectors/auth.selector';
+
+import 'react-phone-number-input/style.css';
 import './phoneInput.scss';
 
-const PhoneInput = ({ register, placeholder, formValue }) => {
+const PhoneInput = ({ register, placeholder, formValue, errorSelector }) => {
   const [value, setValue] = useState();
-  const error = useSelector(selectSignUpErrors);
 
   return (
-    <div className='phone-input__conatiner'>
+    <div className='phone-input__container'>
       <Input
         {...register(formValue)}
-        country='CO'
+        international
+        countryCallingCodeEditable={false}
+        defaultCountry='CO'
         placeholder={placeholder}
         value={value}
         onChange={setValue}
       />
-      <div className='custom-input__container--error'>{error[formValue]}</div>
+      <div className='phone-input__container--error'>{errorSelector[formValue]}</div>
     </div>
   );
+};
+
+PhoneInput.prototype = {
+  register: PropTypes.any,
+  errorSelector: PropTypes.any,
+  placeholder: PropTypes.string,
+  formValue: PropTypes.string,
 };
 
 export default PhoneInput;
