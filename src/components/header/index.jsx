@@ -28,7 +28,7 @@ const Header = () => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 991, minWidth: 768 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const setHeaderHeight = () =>
-    isHeaderCollapse && (isTabletOrMobile || isMobile) ? '430px' : '65px';
+    isHeaderCollapse && (isTabletOrMobile || isMobile) ? '430px' : '75px';
   const isDisplayAuthMenu = () =>
     isHeaderCollapse && (isTabletOrMobile || isMobile) ? 'block' : 'none';
 

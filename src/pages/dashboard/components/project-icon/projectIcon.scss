@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+
+.project-icon__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+
+  i {
+    color: $yellow-primary;
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    color: $text-color-primary;
+    font-size: 15px;
+    max-width: 80px;
+    min-width: 38px;
+    text-align: center;
+    line-height: 1;
+  }
+}

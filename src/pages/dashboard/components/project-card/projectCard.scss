@@ -1,0 +1,112 @@
+@import 'src/styles/variables';
+
+.project-card__container {
+  width: 378px;
+  height: 570px;
+  border: 1px solid $gray-secondary;
+  margin: 5px;
+
+  &--header {
+    margin-top: 10px;
+    width: 100%;
+    height: 112px;
+    padding: 0 15px;
+    line-height: 1.3;
+
+    &--title-project {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &--name {
+        color: $text-color-primary;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: start;
+      }
+
+      &--check {
+        margin-left: 5px;
+        i {
+          color: $green-check;
+        }
+      }
+    }
+
+    &--type-project {
+      color: $gray-primary;
+      font-weight: 700;
+      font-size: 15px;
+      text-align: start;
+    }
+
+    &--location {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &--city {
+        color: $yellow-primary;
+        font-weight: 700;
+        font-size: 15px;
+        margin-right: 5px;
+      }
+
+      &--address {
+        color: $text-color-primary;
+        font-size: 13px;
+      }
+    }
+  }
+
+  &--body {
+    height: 260px;
+    width: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &--wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 5px;
+
+      &--message {
+        color: $yellow-primary;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: left;
+        line-height: 0.7;
+      }
+
+      &--price {
+        color: white;
+        font-size: 38px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &--footer {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--icons-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &--button {
+      margin-top: 25px;
+      min-width: 165px;
+    }
+  }
+}
