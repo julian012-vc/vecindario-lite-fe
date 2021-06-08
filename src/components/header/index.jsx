@@ -12,6 +12,8 @@ import { AUTH_TOKEN, LOGO_URL, SEARCH_PROJECT_PLACEHOLDER } from '../../constant
 import * as Icons from '../../constants/icons';
 import './index.scss';
 import UnloggedDropdown from './components/unlogged-dropdown/unloggedDropdown';
+import UserMenu from './components/user-menu/userMenu';
+import LoggedDropdown from './components/logged-dropdown/loggedDropdown';
 
 const HeaderContainer = styled.div`
   height: ${props => props.headerHeight};
@@ -46,13 +48,14 @@ const Header = () => {
             <>
               <div className='dropdown__container--logged'>
                 <Dropdown header={<CardUser />}>
-                  <div>Buena</div>
+                  <UserMenu />
                 </Dropdown>
               </div>
               <div className='dropdown__container--logged-collapse'>
-                <Dropdown header={<i className='fal fa-bars bars' />}>
-                  <div>Buena</div>
-                </Dropdown>
+                <i
+                  className='fal fa-bars bars'
+                  onClick={() => setIsHeaderCollaspse(!isHeaderCollapse)}
+                />
               </div>
             </>
           ) : (
@@ -71,7 +74,7 @@ const Header = () => {
         </div>
       </div>
       <AuthMenu displayAuthMenu={isDisplayAuthMenu} className='header__container--unlogged'>
-        <UnloggedDropdown />
+        {hasAuthToken ? <LoggedDropdown /> : <UnloggedDropdown />}
       </AuthMenu>
     </HeaderContainer>
   );

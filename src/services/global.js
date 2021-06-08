@@ -19,6 +19,5 @@ export async function postRequest(path, data) {
   };
   const req = await fetch(`${SERVER_URL}${path}`, body);
   const res = await req.json();
-  // TODO Test
   return req.status >= 400 ? Promise.reject(res) : Promise.resolve(res);
 }

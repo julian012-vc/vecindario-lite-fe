@@ -4496,6 +4496,11 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
+emailvalid@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/emailvalid/-/emailvalid-1.0.3.tgz#e0989a8ab752e4d384891bb489dc089a79b1b731"
+  integrity sha512-ijYLD4z5fKDKz7luhWCDR2Ong1frzBCNoYKC+gLHExyY87p2MWb2koEwBWHf+D16Liw9k2jwsF1rUdIIRVlyQQ==
+
 emittery@^0.7.1:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.7.2.tgz#25595908e13af0f5674ab419396e2fb394cdfa82"

@@ -26,15 +26,6 @@ const Dashboard = () => {
         {projects.map(project => (
           <ProjectCard project={project} key={`project-${project.id}`} />
         ))}
-        {projects.map(project => (
-          <ProjectCard project={project} key={`project-${project.id}`} />
-        ))}
-        {projects.map(project => (
-          <ProjectCard project={project} key={`project-${project.id}`} />
-        ))}
-        {projects.map(project => (
-          <ProjectCard project={project} key={`project-${project.id}`} />
-        ))}
       </div>
     </Container>
   );

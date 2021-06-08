@@ -3,8 +3,7 @@ export const SERVER_URL = process.env.REACT_APP_BACKEND_URL;
 // Images
 export const LOGO_URL =
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/vecindario-logo.svg';
-export const USER_PICTURE_URL =
-  'https://lh3.googleusercontent.com/a/AATXAJwRBiNN6vFNFbzufllvFls4T-6the2q5xOKE8Dp=s96-c';
+export const USER_PICTURE_URL = 'https://image.flaticon.com/icons/png/512/2922/2922506.png';
 export const UNLOGGED_PRICTURE_URL =
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/auth/menu-perfil.png';
 export const SING_UP_PICTURE_URL =

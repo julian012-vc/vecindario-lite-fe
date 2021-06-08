@@ -1,28 +1,61 @@
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import * as Routes from './constants/routes'
-import './App.css';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import Dashboard from './pages/dashboard';
 import SingIn from './pages/auth/signIn';
 import SingUp from './pages/auth/signUp';
 
+import { isLogged } from './services/auth.service';
+
+import { setUser } from './redux/slices/user.slice';
+
+import * as Routes from './constants/routes';
+import './App.css';
+import PrivateRoute from './components/private-route/privateRoute';
+import Projects from './pages/projects';
+
 function App() {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    isLogged()
+      .then(res => {
+        dispatch(setUser(res));
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, [dispatch]);
+
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
-        <Switch>
-          <Route exact path={Routes.HOME_ROUTE}>
-            <Dashboard/>
-          </Route>
-          <Route exact path={Routes.AUTH_ROUTE}>
-            <Redirect to={Routes.SIGN_IN_ROUTE}/>
-          </Route>
-          <Route exact path={Routes.SIGN_IN_ROUTE}> 
-            <SingIn/>
-          </Route>
-          <Route exact path={Routes.SIGN_UP_ROUTE}>
-            <SingUp/>
-          </Route>
-        </Switch>
+        {!isLoading && (
+          <Switch>
+            <Route exact path={Routes.HOME_ROUTE}>
+              <Dashboard />
+            </Route>
+            <Route exact path={Routes.AUTH_ROUTE}>
+              <Redirect to={Routes.SIGN_IN_ROUTE} />
+            </Route>
+            <PrivateRoute redirect={Routes.HOME_ROUTE} path={Routes.SIGN_IN_ROUTE}>
+              <SingIn />
+            </PrivateRoute>
+            <PrivateRoute redirect={Routes.HOME_ROUTE} path={Routes.SIGN_UP_ROUTE}>
+              <SingUp />
+            </PrivateRoute>
+            <PrivateRoute
+              redirect={Routes.HOME_ROUTE}
+              path={Routes.MY_PROJECTS_ROUTE}
+              needLogged={true}
+            >
+              <Projects />
+            </PrivateRoute>
+          </Switch>
+        )}
       </Router>
     </div>
   );
