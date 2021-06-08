@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+
+.container__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &--header {
+    width: 100%;
+  }
+
+  &--body {
+    max-width: 1164px;
+    overflow: auto;
+
+  }
+
+  &--footer {
+    width: 100%;
+  }
+}
