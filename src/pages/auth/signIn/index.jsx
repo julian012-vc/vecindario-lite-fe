@@ -18,9 +18,11 @@ import { isValidForm, mappingError, validateForm } from '../../../helpers/form-v
 import { SIGN_IN_VALIDATION } from '../../../helpers/validations/user.validation';
 import * as Icons from '../../../constants/icons';
 import * as Colors from '../../../constants/colors';
-import { SING_IN_PICTURE_URL } from '../../../constants';
+import { AUTH_TOKEN, SING_IN_PICTURE_URL } from '../../../constants';
 import { HOME_ROUTE, SIGN_UP_ROUTE } from '../../../constants/routes';
 import './index.scss';
+import { logIn } from '../../../services/user.service';
+import { saveInLocalStorage } from '../../../helpers';
 
 const SingIn = () => {
   const history = useHistory();
@@ -32,8 +34,15 @@ const SingIn = () => {
   const onSubmit = async data => {
     dispatch(signIn(data));
     if (await isValidForm(data, SIGN_IN_VALIDATION)) {
-      // TODO MAKE REQUEST WITH SERVICE
-      dispatch(signInSuccess());
+      logIn(data)
+        .then(res => {
+          saveInLocalStorage(AUTH_TOKEN, res.token);
+          dispatch(signInSuccess());
+          window.location.reload(false);
+        })
+        .catch(err => {
+          dispatch(signInWithErrors(err.error));
+        });
     } else {
       validateForm(data, SIGN_IN_VALIDATION).catch(err => {
         dispatch(signInWithErrors(mappingError(err)));

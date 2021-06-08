@@ -9,3 +9,6 @@ export const BUILDING_AREA_ICON = 'fal fa-arrows';
 export const HAS_VIS_ICON = 'far fa-sack';
 export const BATHROOMS_ICON = 'fal fa-toilet';
 export const HAS_PARKING_ICON = 'fad fa-car';
+
+export const MY_PROJECTS_ICON = 'fal fa-building';
+export const LOG_OUT_ICON = 'fal fa-sign-out-alt';

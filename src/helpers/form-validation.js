@@ -1,4 +1,13 @@
 import * as yup from 'yup';
+// TODO VERIFY EMAIL
+// import EmailValidation from 'emailvalid';
+//
+// const ev = new EmailValidation();
+//
+// yup.addMethod(yup.string, 'isSpamEmail', function (email, msg) {
+//   const result = ev.check(email);
+//   return result.valid;
+// });
 
 export function validateForm(data, formSchema) {
   const schema = yup.object().shape(formSchema);
