@@ -12,3 +12,12 @@ export const HAS_PARKING_ICON = 'fad fa-car';
 
 export const MY_PROJECTS_ICON = 'fal fa-building';
 export const LOG_OUT_ICON = 'fal fa-sign-out-alt';
+export const PLUS_ICON = 'far fa-plus';
+
+export const PROJECT_TITLE_ICON = 'fal fa-building';
+export const TYPE_PROJECT_ICON = 'fad fa-check-circle';
+export const CITY_PROJECT_ICON = 'fal fa-city';
+export const ADDRESS_PROJECT_ICON = 'fal fa-map-marked-alt';
+export const PRICE_PROJECT_ICON = 'far fa-dollar-sign';
+
+export const ARROW_DOWN_ICON = 'far fa-chevron-down';

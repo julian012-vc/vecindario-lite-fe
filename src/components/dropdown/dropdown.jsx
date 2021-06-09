@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import './dropdown.scss';
 
-const Dropdown = ({ children, header }) => {
+const Dropdown = ({ children, header, positions = ['bottom'] }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return (
     <Popover
       isOpen={isPopoverOpen}
-      positions={['bottom']}
+      positions={positions}
       padding={5}
       onClickOutside={() => setIsPopoverOpen(false)}
       content={() => <>{children}</>}
@@ -25,6 +25,7 @@ const Dropdown = ({ children, header }) => {
 Dropdown.prototype = {
   children: PropTypes.element,
   header: PropTypes.element,
+  positions: PropTypes.array,
 };
 
 export default Dropdown;

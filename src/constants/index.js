@@ -3,6 +3,7 @@ export const SERVER_URL = process.env.REACT_APP_BACKEND_URL;
 // Images
 export const LOGO_URL =
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/vecindario-logo.svg';
+export const ADMIN_LOGO_URL = 'https://simula.vecindario.com/imagenes/vecindario-logo.svg';
 export const USER_PICTURE_URL = 'https://image.flaticon.com/icons/png/512/2922/2922506.png';
 export const UNLOGGED_PRICTURE_URL =
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/auth/menu-perfil.png';
@@ -22,8 +23,13 @@ export const PROJECTS_PICTURE_URL = [
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/pictures/27957/blob_thumb.jpg?1588888369',
 ];
 
-export const CREATE_LEAD_SUCESS_URL =
+export const CREATE_LEAD_SUCCESS_URL =
   'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/visit_scheduler/schedule_visit.gif';
+export const REGISTER_PROJECT_SUCCESS_URL =
+  'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/index/filter_cards/vecindario_vecindarios.png';
+
+export const CREATE_PROJECT_IMAGE_URL =
+  'https://viewinmobiliario2.s3-sa-east-1.amazonaws.com/static_assets/search/comprar_vivienda.png';
 
 // Placeholder
 export const SEARCH_PROJECT_PLACEHOLDER = 'Ingresa la ciudad, el barrio o nombre del proyecto';

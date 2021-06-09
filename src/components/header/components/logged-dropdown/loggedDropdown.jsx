@@ -15,6 +15,8 @@ import { AUTH_TOKEN, SEARCH_PROJECT_PLACEHOLDER, USER_PICTURE_URL } from '../../
 import { removeValueFromLocalStorage } from '../../../../helpers';
 
 import './loggedDropdown.scss';
+import { Link } from 'react-router-dom';
+import { PROJECTS_ROUTE } from '../../../../constants/routes';
 
 const LoggedDropdown = () => {
   const user = useSelector(selectUser);
@@ -40,7 +42,12 @@ const LoggedDropdown = () => {
         </div>
       </div>
       <div className='logged-dropdown__container--footer'>
-        <FieldsMenu value='Mis Projectos' icon={MY_PROJECTS_ICON} />
+        <Link
+          to={`${PROJECTS_ROUTE}${user.slug}`}
+          className='logged-dropdown__container--footer--projects'
+        >
+          <FieldsMenu value='Mis Projectos' icon={MY_PROJECTS_ICON} />
+        </Link>
         <div onClick={logOutUser} className='logged-dropdown__container--footer--logout'>
           <FieldsMenu value='Cerrar sesión' icon={LOG_OUT_ICON} />
         </div>

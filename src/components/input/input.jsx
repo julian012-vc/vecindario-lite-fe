@@ -7,14 +7,22 @@ import './input.scss';
 const PASSWORD_TYPE = 'password';
 const TEXT_TYPE = 'text';
 
-const Input = ({ placeholder, icon, isPassword = false, formValue, register, errorSelector }) => {
-  const [showPassword, setShowPassord] = useState(isPassword);
+const Input = ({
+  placeholder,
+  icon,
+  isPassword = false,
+  formValue,
+  register,
+  errorSelector,
+  value = null,
+}) => {
+  const [showPassword, setShowPassword] = useState(isPassword);
 
   return (
     <div className='custom-input__container'>
       <p className='control has-icons-right'>
         <input
-          {...register(formValue)}
+          {...register(formValue, { value: !!value ? value[formValue] : '' })}
           className='input is-rounded'
           type={showPassword ? PASSWORD_TYPE : TEXT_TYPE}
           placeholder={placeholder}
@@ -22,7 +30,7 @@ const Input = ({ placeholder, icon, isPassword = false, formValue, register, err
         <span className='icon is-small is-right'>
           <i
             className={isPassword && showPassword ? EYE_SLASH_ICON : icon}
-            onClick={() => isPassword && setShowPassord(!showPassword)}
+            onClick={() => isPassword && setShowPassword(!showPassword)}
           />
         </span>
       </p>

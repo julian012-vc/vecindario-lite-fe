@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '../../components/container';
@@ -13,22 +13,28 @@ import './index.scss';
 const Dashboard = () => {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchProjects().then(data => {
       dispatch(fetchProjectsSuccess(data));
+      setIsLoading(false);
     });
   }, [dispatch]);
 
   return (
     <Container>
-      <div className='dasboard__container'>
-        <div className='dasboard__container--header'>Recomendados cerca de ti</div>
-        <div className='dasboard__container--body'>
-          {projects.map(project => (
-            <ProjectCard project={project} key={`project-${project.id}`} />
-          ))}
-        </div>
+      <div className='dashboard__container'>
+        {!isLoading && (
+          <>
+            <div className='dashboard__container--header'>Recomendados cerca de ti</div>
+            <div className='dashboard__container--body'>
+              {projects.map(project => (
+                <ProjectCard project={project} key={`project-${project.id}`} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </Container>
   );

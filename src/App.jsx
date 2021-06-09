@@ -14,6 +14,7 @@ import * as Routes from './constants/routes';
 import './App.css';
 import PrivateRoute from './components/private-route/privateRoute';
 import Projects from './pages/projects';
+import ProjectLeads from './pages/project-leads';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,13 @@ function App() {
             </PrivateRoute>
             <PrivateRoute redirect={Routes.HOME_ROUTE} path={Routes.SIGN_UP_ROUTE}>
               <SingUp />
+            </PrivateRoute>
+            <PrivateRoute
+              redirect={Routes.HOME_ROUTE}
+              path={Routes.PROJECT_REPORT_ROUTE}
+              needLogged={true}
+            >
+              <ProjectLeads />
             </PrivateRoute>
             <PrivateRoute
               redirect={Routes.HOME_ROUTE}
