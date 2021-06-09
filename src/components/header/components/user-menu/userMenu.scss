@@ -14,6 +14,11 @@
   .link__container {
     width: 100%;
   }
+
+  &--logout {
+    cursor: pointer;
+    margin-left: -2px;
+  }
 }
 
 .fields-menu__container {

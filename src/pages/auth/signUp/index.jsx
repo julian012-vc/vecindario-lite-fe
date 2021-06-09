@@ -17,13 +17,17 @@ import { selectSingUpIsLoading, selectSignUpErrors } from '../../../redux/select
 
 import { isValidForm, mappingError, validateForm } from '../../../helpers/form-validation';
 import { SIGN_UP_VALIDATION } from '../../../helpers/validations/user.validation';
+
 import * as Icons from '../../../constants/icons';
 import * as Colors from '../../../constants/colors';
 import { AUTH_TOKEN, SING_UP_PICTURE_URL } from '../../../constants';
 import { HOME_ROUTE, SIGN_IN_ROUTE } from '../../../constants/routes';
-import { createAccount } from '../../../services/auth.service';
-import './index.scss';
+
 import { saveInLocalStorage } from '../../../helpers';
+
+import { createAccount } from '../../../services/auth.service';
+
+import './index.scss';
 
 const SingUp = () => {
   const history = useHistory();

@@ -2,17 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SearchInput from '../../../search-input';
+import { FieldsMenu } from '../user-menu/userMenu';
 
 import { selectUser } from '../../../../redux/selectors/user.selector';
+
+import { logOut } from '../../../../redux/slices/user.slice';
 
 import * as Icons from '../../../../constants/icons';
 import { LOG_OUT_ICON, MY_PROJECTS_ICON } from '../../../../constants/icons';
 import { AUTH_TOKEN, SEARCH_PROJECT_PLACEHOLDER, USER_PICTURE_URL } from '../../../../constants';
-import { FieldsMenu } from '../user-menu/userMenu';
+
+import { removeValueFromLocalStorage } from '../../../../helpers';
 
 import './loggedDropdown.scss';
-import { logOut } from '../../../../redux/slices/user.slice';
-import { removeValueFromLocalStorage } from '../../../../helpers';
 
 const LoggedDropdown = () => {
   const user = useSelector(selectUser);

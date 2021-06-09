@@ -23,9 +23,12 @@ const Dashboard = () => {
   return (
     <Container>
       <div className='dasboard__container'>
-        {projects.map(project => (
-          <ProjectCard project={project} key={`project-${project.id}`} />
-        ))}
+        <div className='dasboard__container--header'>Recomendados cerca de ti</div>
+        <div className='dasboard__container--body'>
+          {projects.map(project => (
+            <ProjectCard project={project} key={`project-${project.id}`} />
+          ))}
+        </div>
       </div>
     </Container>
   );
