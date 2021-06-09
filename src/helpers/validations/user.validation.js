@@ -17,6 +17,14 @@ export const SIGN_UP_VALIDATION = {
   // TODO PHONE REGEX VALIDATION
 };
 
+export const LEAD_FORM_VALIDATION = {
+  first_name: yup.string().required(Errors.REQUIRED_ERROR),
+  last_name: yup.string().required(Errors.REQUIRED_ERROR),
+  email: yup.string().required(Errors.REQUIRED_ERROR).email(Errors.EMAIL_ERROR),
+  phone: yup.string().required(Errors.REQUIRED_ERROR).matches(PHONE_REGEX, PHONE_ERROR),
+  // TODO PHONE REGEX VALIDATION
+};
+
 export const SIGN_IN_VALIDATION = {
   email: yup.string().required(Errors.REQUIRED_ERROR).email(Errors.EMAIL_ERROR),
   password: yup.string().required(Errors.REQUIRED_ERROR),

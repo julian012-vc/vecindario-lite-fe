@@ -2,21 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { PROJECT_PICTURE_URL } from '../../../../constants';
-import * as Colors from '../../../../constants/colors';
 import Button from '../../../../components/button/button';
-import { TYPE_PROJECTS } from '../../../../constants/type-projects';
-import ProjectIcon from '../project-icon/projectIcon';
-import * as Icons from '../../../../constants/icons';
+import CreateLead from '../create-lead/createLead';
 import Modal from '../../../../components/modal/modal';
-import './projectCard.scss';
+import ProjectIcon from '../project-icon/projectIcon';
+
 import { openModal } from '../../../../redux/slices/modal.slice';
+
+import { randomImageProject } from '../../../../helpers';
+
+import * as Icons from '../../../../constants/icons';
+import * as Colors from '../../../../constants/colors';
+import { TYPE_PROJECTS } from '../../../../constants/type-projects';
+import { PROJECTS_PICTURE_URL } from '../../../../constants';
+
+import './projectCard.scss';
+import { cleanCreateLead } from '../../../../redux/slices/lead/lead-form.slice';
 
 const ProjectCard = ({ project }) => {
   const transformPrice = price => Math.round(price / 1_000_000).toFixed(0);
   const dispatch = useDispatch();
   const modalId = `card-project-modal-${project.id}`;
-  const createLead = () => dispatch(openModal(modalId));
+  const NUMBER_IMAGE = randomImageProject();
 
   return (
     <>
@@ -41,7 +48,7 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
         <div className='project-card__container--body'>
-          <img src={PROJECT_PICTURE_URL} alt={project.title} />
+          <img src={PROJECTS_PICTURE_URL[NUMBER_IMAGE]} alt={project.title} />
           <div className='project-card__container--body--wrapper'>
             <div className='project-card__container--body--wrapper--message'>
               Precio final desde:
@@ -54,13 +61,13 @@ const ProjectCard = ({ project }) => {
         <div className='project-card__container--footer'>
           <div className='project-card__container--footer--icons-wrapper'>
             <ProjectIcon
-              icon={Icons.PRIVATE_AREA_ICON}
-              value={`${project.private_area} mt`}
+              icon={Icons.BUILDING_AREA_ICON}
+              value={`${project.building_area} mt`}
               sup='2'
             />
             <ProjectIcon
-              icon={Icons.BUILDING_AREA_ICON}
-              value={`${project.building_area} mt`}
+              icon={Icons.PRIVATE_AREA_ICON}
+              value={`${project.private_area} mt`}
               sup='2'
             />
             <ProjectIcon icon={Icons.HAS_VIS_ICON} value={project.has_vis} />
@@ -72,13 +79,13 @@ const ProjectCard = ({ project }) => {
               background={Colors.WHITE}
               onHoverColor={Colors.YELLOW_PRIMARY}
               text='Conoce más'
-              onClickAction={createLead}
+              onClickAction={() => dispatch(openModal(modalId))}
             />
           </div>
         </div>
       </div>
-      <Modal id={modalId}>
-        <div>Project {project.title}</div>
+      <Modal id={modalId} onDispatch={cleanCreateLead()}>
+        <CreateLead project={project} image={NUMBER_IMAGE} />
       </Modal>
     </>
   );
