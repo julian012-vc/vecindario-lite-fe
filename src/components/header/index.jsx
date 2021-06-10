@@ -5,15 +5,16 @@ import { useMediaQuery } from 'react-responsive';
 import BoxAuth from './components/box-auth/boxAuth';
 import CardUser from './components/card-user/cardUser';
 import Dropdown from '../dropdown/dropdown';
+import LoggedDropdown from './components/logged-dropdown/loggedDropdown';
 import SearchInput from '../search-input';
+import UnloggedDropdown from './components/unlogged-dropdown/unloggedDropdown';
+import UserMenu from './components/user-menu/userMenu';
 
 import { getValueFromLocalStorage } from '../../helpers';
 import { AUTH_TOKEN, LOGO_URL, SEARCH_PROJECT_PLACEHOLDER } from '../../constants';
 import * as Icons from '../../constants/icons';
+
 import './index.scss';
-import UnloggedDropdown from './components/unlogged-dropdown/unloggedDropdown';
-import UserMenu from './components/user-menu/userMenu';
-import LoggedDropdown from './components/logged-dropdown/loggedDropdown';
 
 const HeaderContainer = styled.div`
   height: ${props => props.headerHeight};

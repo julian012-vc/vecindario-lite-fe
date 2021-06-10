@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+
+.input-number__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5px;
+
+  p {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &--input {
+    width: 100%;
+    background-color: $gray-secondary;
+    color: $gray-primary;
+    border: none;
+  }
+
+  &--error {
+    color: red;
+    font-size: 0.875em;
+    text-align: start;
+    padding-left: 10px;
+    margin-top: -6px;
+    height: 15px;
+    margin-bottom: 10px;
+  }
+}

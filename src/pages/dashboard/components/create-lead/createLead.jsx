@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
-import './createLead.scss';
-import { TYPE_PROJECTS } from '../../../../constants/type-projects';
-import { CREATE_LEAD_SUCESS_URL, PROJECTS_PICTURE_URL } from '../../../../constants';
-import Input from '../../../../components/input/input';
-import * as Icons from '../../../../constants/icons';
-import PhoneInput from '../../../../components/phone-input/phoneInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectLeadForm } from '../../../../redux/selectors/lead/lead-form.selector';
-import { useForm } from 'react-hook-form';
-import * as Colors from '../../../../constants/colors';
 import Button from '../../../../components/button/button';
+import Input from '../../../../components/input/input';
+import PhoneInput from '../../../../components/phone-input/phoneInput';
+
+import { TYPE_PROJECTS } from '../../../../constants/type-projects';
+import { CREATE_LEAD_SUCCESS_URL, PROJECTS_PICTURE_URL } from '../../../../constants';
+import * as Icons from '../../../../constants/icons';
+import * as Colors from '../../../../constants/colors';
+import { selectLeadForm } from '../../../../redux/selectors/lead/lead-form.selector';
+
 import {
   cleanCreateLead,
   createLead,
@@ -20,9 +21,12 @@ import {
 } from '../../../../redux/slices/lead/lead-form.slice';
 import { isValidForm, mappingError, validateForm } from '../../../../helpers/form-validation';
 import { LEAD_FORM_VALIDATION } from '../../../../helpers/validations/user.validation';
-import { createLeadService } from '../../../../services/lead.service';
 import { closeModal } from '../../../../redux/slices/modal.slice';
 import { selectUser } from '../../../../redux/selectors/user.selector';
+
+import { createLeadService } from '../../../../services/lead.service';
+
+import './createLead.scss';
 
 const CreateLead = ({ project, image }) => {
   const createLeadForm = useSelector(selectLeadForm);
@@ -132,7 +136,7 @@ const CreateLead = ({ project, image }) => {
         <div className='create-lead__container--footer'>
           <div className='create-lead__container--footer--body'>
             <div className='create-lead__container--footer--body--img'>
-              <img src={CREATE_LEAD_SUCESS_URL} alt='success' />
+              <img src={CREATE_LEAD_SUCCESS_URL} alt='success' />
             </div>
             <div className='create-lead__container--footer--body--title'>
               Guardado correctamente

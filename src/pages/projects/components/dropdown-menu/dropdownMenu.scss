@@ -1,0 +1,66 @@
+@import 'src/styles/variables';
+
+.dropdown-menu__container {
+  background-color: white;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid $gray-tertiary;
+
+  &--create {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    padding: 0 15px;
+    cursor: pointer;
+    color: $text-color-primary;
+    font-size: 1rem;
+
+    i {
+      margin-right: 10px;
+      color: $text-color-primary;
+      font-size: 20px;
+    }
+  }
+
+  &--divider {
+    height: 1px;
+    background-color: $gray-primary;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  &--search {
+    padding: 0 10px;
+    height: 30px;
+    margin-top: 20px;
+    input {
+      border: 1px solid $gray-tertiary;
+      color: $text-color-primary;
+    }
+    margin-bottom: 20px;
+  }
+
+  &--subtitle {
+    margin-left: 15px;
+    color: $text-color-primary;
+    font-weight: 600;
+  }
+
+  &--projects {
+    padding: 0 15px;
+
+    &--option {
+      color: $text-color-primary;
+      font-size: 16px;
+      margin: 7px 0;
+      cursor: pointer;
+      padding: 0 7px;
+    }
+  }
+}
+
+.dropdown-menu__container--projects--option:hover:nth-child(n) {
+  background-color: $gray-tertiary;
+  border-radius: 5px;
+}
