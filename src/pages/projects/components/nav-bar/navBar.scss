@@ -1,0 +1,25 @@
+@import 'src/styles/variables';
+
+.navbar__wrapper {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
+  background-color: $gray-nav-bar;
+
+  &--icon {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 36px;
+      width: 200px;
+    }
+  }
+
+  &--search-input {
+    display: flex
+  }
+}

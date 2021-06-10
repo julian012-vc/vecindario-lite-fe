@@ -1,37 +1,63 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import Input from '../../../components/input/input';
+import { useHistory } from 'react-router-dom';
 
-import './index.scss';
-import * as Icons from '../../../constants/icons';
-import { SING_UP_PICTURE_URL } from '../../../constants';
-import * as Colors from '../../../constants/colors';
-import Button from '../../../components/button/button';
-import { isValidForm, mappingError, validateForm } from '../../../helpers/form-validation';
-import { SING_UP_VALIDATION } from '../../../helpers/validations/user.validation';
-import { signUp, signUpSuccess, signUpWithErrors } from '../../../redux/slices/auth/sign-up.slice';
-import { selectSingUpIsLoading } from '../../../redux/selectors/auth.selector';
+import Input from '../../../components/input/input';
 import PhoneInput from '../../../components/phone-input/phoneInput';
-import { Link } from 'react-router-dom';
+import Button from '../../../components/button/button';
+
+import {
+  cleanSignUp,
+  signUp,
+  signUpSuccess,
+  signUpWithErrors,
+} from '../../../redux/slices/auth/sign-up.slice';
+import { selectSingUpIsLoading, selectSignUpErrors } from '../../../redux/selectors/auth.selector';
+
+import { isValidForm, mappingError, validateForm } from '../../../helpers/form-validation';
+import { SIGN_UP_VALIDATION } from '../../../helpers/validations/user.validation';
+
+import * as Icons from '../../../constants/icons';
+import * as Colors from '../../../constants/colors';
+import { AUTH_TOKEN, SING_UP_PICTURE_URL } from '../../../constants';
 import { HOME_ROUTE, SIGN_IN_ROUTE } from '../../../constants/routes';
 
+import { saveInLocalStorage } from '../../../helpers';
+
+import { createAccount } from '../../../services/auth.service';
+
+import './index.scss';
+
 const SingUp = () => {
+  const history = useHistory();
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectSingUpIsLoading);
+  const errorSelector = useSelector(selectSignUpErrors);
 
   const onSubmit = async data => {
     dispatch(signUp(data));
-    console.log(data);
-    if (await isValidForm(data, SING_UP_VALIDATION)) {
-      // TODO MAKE REQUEST WITH SERVICE
-      dispatch(signUpSuccess());
+    if (await isValidForm(data, SIGN_UP_VALIDATION)) {
+      createAccount(data)
+        .then(res => {
+          saveInLocalStorage(AUTH_TOKEN, res.token);
+          dispatch(signUpSuccess());
+          window.location.reload(false);
+        })
+        .catch(err => {
+          dispatch(signUpWithErrors(err.errors));
+        });
     } else {
-      validateForm(data, SING_UP_VALIDATION).catch(err => {
+      validateForm(data, SIGN_UP_VALIDATION).catch(err => {
         dispatch(signUpWithErrors(mappingError(err)));
       });
     }
+  };
+
+  const redirect = path => {
+    dispatch(cleanSignUp());
+    history.push(path);
   };
 
   return (
@@ -60,18 +86,21 @@ const SingUp = () => {
                 icon={Icons.USER_ICON}
                 register={register}
                 formValue='first_name'
+                errorSelector={errorSelector}
               />
               <Input
                 placeholder='Apellidos'
                 icon={Icons.USER_ICON}
                 register={register}
                 formValue='last_name'
+                errorSelector={errorSelector}
               />
               <Input
                 placeholder='E-mail'
                 icon={Icons.EMAIL_ICON}
                 register={register}
                 formValue='email'
+                errorSelector={errorSelector}
               />
               <Input
                 placeholder='Contraseña'
@@ -79,6 +108,7 @@ const SingUp = () => {
                 isPassword={true}
                 register={register}
                 formValue='password'
+                errorSelector={errorSelector}
               />
               <Input
                 placeholder='Confirmar contraseña'
@@ -86,8 +116,14 @@ const SingUp = () => {
                 isPassword={true}
                 register={register}
                 formValue='password_confirmation'
+                errorSelector={errorSelector}
               />
-              <PhoneInput register={register} placeholder='Número de telefono' formValue='phone' />
+              <PhoneInput
+                register={register}
+                placeholder='Número de telefono'
+                formValue='phone'
+                errorSelector={errorSelector}
+              />
             </div>
           </div>
 
@@ -108,12 +144,12 @@ const SingUp = () => {
 
             <div className='sing-up__wrapper--footer--comeback'>
               ¿Ya tienes cuenta?
-              <Link className='link__sing-in' to={SIGN_IN_ROUTE}>
+              <label className='link__sing-in' onClick={() => redirect(SIGN_IN_ROUTE)}>
                 Ingresa
-              </Link>
-              <Link className='link__home' to={HOME_ROUTE}>
+              </label>
+              <label className='link__home' onClick={() => redirect(HOME_ROUTE)}>
                 Volver
-              </Link>
+              </label>
             </div>
           </div>
         </div>

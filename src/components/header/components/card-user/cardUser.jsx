@@ -1,21 +1,21 @@
-import React from 'react'
-import { USER_PICTURE_URL } from '../../../../constants'
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import './cardUser.scss'
+import { USER_PICTURE_URL } from '../../../../constants';
 
-const CardUser = ({ name }) => {
-    return (
-        <div className="card-user__container">
-            <img className="card-user__container--logo" src={USER_PICTURE_URL} alt="logo"/>
-            <div className="card-user__container--name">Julian Camillo</div>
-            <i className="far fa-chevron-down card-user__container--icon"/>
-        </div>
-    )
-}
+import './cardUser.scss';
+import { selectUser } from '../../../../redux/selectors/user.selector';
 
-CardUser.prototype = {
-    name: PropTypes.string
-}
+const CardUser = () => {
+  const user = useSelector(selectUser);
 
-export default CardUser
+  return (
+    <div className='card-user__container'>
+      <img className='card-user__container--logo' src={USER_PICTURE_URL} alt='logo' />
+      <div className='card-user__container--name'>{!!user && user.first_name}</div>
+      <i className='far fa-chevron-down card-user__container--icon' />
+    </div>
+  );
+};
+
+export default CardUser;

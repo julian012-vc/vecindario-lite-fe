@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+
+.dashboard__container {
+  width: 100%;
+
+
+  &--header {
+    margin-top: 70px;
+    width: 100%;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $gray-primary;
+    text-align: left;
+  }
+
+  &--body {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}

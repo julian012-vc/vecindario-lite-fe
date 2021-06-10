@@ -1,0 +1,9 @@
+@import 'src/styles/variables';
+
+.search-field-input__container {
+  input {
+    height: 35px;
+    border: none;
+    border-radius: 0;
+  }
+}

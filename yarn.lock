@@ -4496,6 +4496,11 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
+emailvalid@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/emailvalid/-/emailvalid-1.0.3.tgz#e0989a8ab752e4d384891bb489dc089a79b1b731"
+  integrity sha512-ijYLD4z5fKDKz7luhWCDR2Ong1frzBCNoYKC+gLHExyY87p2MWb2koEwBWHf+D16Liw9k2jwsF1rUdIIRVlyQQ==
+
 emittery@^0.7.1:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.7.2.tgz#25595908e13af0f5674ab419396e2fb394cdfa82"
@@ -9596,6 +9601,13 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-number-format@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.6.3.tgz#41e99871e50167cc1ac86c961285504244382f55"
+  integrity sha512-AZJwR/2mnl1cTRxQRjIITKp+Rg+4bYgjNylw7it7+x9UyIUAEpEK3fETKCqC5F2mVW8S41Xc6gpeH3VcJbPRsg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-phone-number-input@^3.1.23:
   version "3.1.23"
   resolved "https://registry.yarnpkg.com/react-phone-number-input/-/react-phone-number-input-3.1.23.tgz#8e8d2b7fb98d94514721d05ca5c58bd31f8d06e1"
@@ -9861,7 +9873,7 @@ redux-thunk@^2.3.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux@^4.0.0:
+redux@^4.0.0, redux@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.0.tgz#eb049679f2f523c379f1aff345c8612f294c88d4"
   integrity sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==

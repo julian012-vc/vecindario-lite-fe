@@ -11,12 +11,20 @@ const StyledButton = styled.button.attrs(props => ({ type: props.type }))`
   }
 `;
 
-const Button = ({ text, background, onHoverColor, type = 'text', isLoading = false }) => {
+const Button = ({
+  text,
+  background,
+  onHoverColor,
+  type = 'text',
+  isLoading = false,
+  onClickAction = null,
+}) => {
   return (
     <StyledButton
       background={background}
       hoverColor={onHoverColor}
       type={type}
+      onClick={onClickAction}
       className={`button__container ` + (isLoading ? 'button is-loading' : '')}
     >
       {text}
@@ -30,6 +38,7 @@ Button.prototype = {
   onHoverColor: PropTypes.string,
   type: PropTypes.string,
   isLoading: PropTypes.bool,
+  onClickAction: PropTypes.func,
 };
 
 export default Button;

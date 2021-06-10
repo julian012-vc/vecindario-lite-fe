@@ -1,0 +1,41 @@
+@import 'src/styles/variables';
+
+.user-menu__container {
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 10px;
+  border-radius: 5px;
+
+  .link__container {
+    width: 100%;
+  }
+
+  &--logout {
+    cursor: pointer;
+    margin-left: -2px;
+  }
+}
+
+.fields-menu__container {
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  i {
+    color: $yellow-primary;
+    font-size: 20px;
+  }
+
+  p {
+    font-weight: 700;
+    margin-left: 15px;
+    font-size: 1rem;
+  }
+}

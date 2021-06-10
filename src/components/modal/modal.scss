@@ -1,0 +1,30 @@
+@import 'src/styles/variables';
+
+.modal {
+  animation: fadeIn ease .2s;
+}
+
+.modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 560px;
+  position: relative;
+  padding: 40px 30px 30px;
+  background-color: white;
+  border-radius: 4px;
+  animation: openModal ease .5s;
+}
+
+@keyframes openModal {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes openModal {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
