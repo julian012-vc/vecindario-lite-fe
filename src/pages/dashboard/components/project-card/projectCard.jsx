@@ -9,12 +9,9 @@ import ProjectIcon from '../project-icon/projectIcon';
 
 import { openModal } from '../../../../redux/slices/modal.slice';
 
-import { randomImageProject } from '../../../../helpers';
-
 import * as Icons from '../../../../constants/icons';
 import * as Colors from '../../../../constants/colors';
 import { TYPE_PROJECTS } from '../../../../constants/type-projects';
-import { PROJECTS_PICTURE_URL } from '../../../../constants';
 
 import './projectCard.scss';
 import { cleanCreateLead } from '../../../../redux/slices/lead/lead-form.slice';
@@ -23,7 +20,6 @@ const ProjectCard = ({ project }) => {
   const transformPrice = price => Math.round(price / 1_000_000).toFixed(0);
   const dispatch = useDispatch();
   const modalId = `card-project-modal-${project.id}`;
-  const NUMBER_IMAGE = randomImageProject();
 
   return (
     <>
@@ -48,7 +44,7 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
         <div className='project-card__container--body'>
-          <img src={PROJECTS_PICTURE_URL[NUMBER_IMAGE]} alt={project.title} />
+          <img src={project.image} alt={project.title} />
           <div className='project-card__container--body--wrapper'>
             <div className='project-card__container--body--wrapper--message'>
               Precio final desde:
@@ -85,7 +81,7 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
       <Modal id={modalId} onDispatch={cleanCreateLead()}>
-        <CreateLead project={project} image={NUMBER_IMAGE} />
+        <CreateLead project={project} />
       </Modal>
     </>
   );

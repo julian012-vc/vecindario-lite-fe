@@ -21,3 +21,6 @@ export const ADDRESS_PROJECT_ICON = 'fal fa-map-marked-alt';
 export const PRICE_PROJECT_ICON = 'far fa-dollar-sign';
 
 export const ARROW_DOWN_ICON = 'far fa-chevron-down';
+
+export const USER_LEAD_ICON = 'fas fa-user-circle';
+export const COMEBACK_ARROW_ICON = 'fas fa-chevron-left';
