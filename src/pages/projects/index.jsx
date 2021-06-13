@@ -3,16 +3,18 @@ import React, { useEffect, useState } from 'react';
 import NavBar from './components/nav-bar/navBar';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMyProjects } from '../../redux/selectors/admin.selector';
+import { selectMyProjects, selectWordFilter } from '../../redux/selectors/admin.selector';
 import { fetchMyProjects } from '../../services/admin.service';
 import { fetchProjects } from '../../redux/slices/admin.slice';
 import ProjectBox from './components/project-box/projectBox';
 import './index.scss';
+import { projectWithFilter } from '../../helpers';
 
 const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const projects = useSelector(selectMyProjects);
+  const wordFilter = useSelector(selectWordFilter);
 
   useEffect(() => {
     fetchMyProjects()
@@ -33,7 +35,10 @@ const Projects = () => {
       <div className='project-dashboard__wrapper--body'>
         <div className='project-dashboard__wrapper--body--title'>Lista de proyectos creados:</div>
         <div className='project-dashboard__wrapper--body--wrapper'>
-          {!isLoading && projects.map(project => <ProjectBox project={project} key={project.id} />)}
+          {!isLoading &&
+            projectWithFilter(projects, wordFilter.toUpperCase()).map(project => (
+              <ProjectBox project={project} key={project.id} />
+            ))}
           {isLoading && <div>Cargando...</div>}
         </div>
       </div>

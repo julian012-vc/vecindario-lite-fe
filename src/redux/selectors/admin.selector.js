@@ -4,3 +4,5 @@ export const selectCreateProject = state => state.admin.createProject;
 
 export const selectEditProject = state => state.admin.editProject;
 export const selectProjectToEdit = state => state.admin.editProject.project;
+
+export const selectWordFilter = state => state.admin.wordFilter;

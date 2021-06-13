@@ -21,8 +21,15 @@ export const adminSlice = createSlice({
       newData: {},
       isUpdated: false,
     },
+    wordFilter: '',
   },
   reducers: {
+    clearWordFilter: state => {
+      state.wordFilter = '';
+    },
+    setWordFilter: (state, action) => {
+      state.wordFilter = action.payload || '';
+    },
     startEditProject: (state, action) => {
       state.editProject.project = action.payload;
     },
@@ -96,5 +103,7 @@ export const {
   editProject,
   editProjectWithErrors,
   startEditProject,
+  clearWordFilter,
+  setWordFilter,
 } = adminSlice.actions;
 export default adminSlice.reducer;
