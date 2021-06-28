@@ -8,7 +8,7 @@ import Input from '../../../../components/input/input';
 import PhoneInput from '../../../../components/phone-input/phoneInput';
 
 import { TYPE_PROJECTS } from '../../../../constants/type-projects';
-import { CREATE_LEAD_SUCCESS_URL, PROJECTS_PICTURE_URL } from '../../../../constants';
+import { CREATE_LEAD_SUCCESS_URL } from '../../../../constants';
 import * as Icons from '../../../../constants/icons';
 import * as Colors from '../../../../constants/colors';
 import { selectLeadForm } from '../../../../redux/selectors/lead/lead-form.selector';
@@ -28,7 +28,7 @@ import { createLeadService } from '../../../../services/lead.service';
 
 import './createLead.scss';
 
-const CreateLead = ({ project, image }) => {
+const CreateLead = ({ project }) => {
   const createLeadForm = useSelector(selectLeadForm);
   const user = useSelector(selectUser);
   const { register, handleSubmit } = useForm();
@@ -59,7 +59,7 @@ const CreateLead = ({ project, image }) => {
     }
   };
 
-  const closeModalSucess = () => {
+  const closeModalSuccess = () => {
     dispatch(cleanCreateLead());
     dispatch(closeModal());
   };
@@ -68,7 +68,7 @@ const CreateLead = ({ project, image }) => {
     <div className='create-lead__container'>
       <div className='create-lead__container--header'>
         <div className='create-lead__container--header--photo'>
-          <img src={PROJECTS_PICTURE_URL[image]} alt='icon' />
+          <img src={project.image} alt='icon' />
         </div>
         <div className='create-lead__container--header--wrapper'>
           <div className='create-lead__container--header--wrapper--title'>{project.title}</div>
@@ -150,7 +150,7 @@ const CreateLead = ({ project, image }) => {
               background={Colors.WHITE}
               onHoverColor={Colors.YELLOW_PRIMARY}
               text='Cerrar'
-              onClickAction={closeModalSucess}
+              onClickAction={closeModalSuccess}
             />
           </div>
         </div>
@@ -161,7 +161,6 @@ const CreateLead = ({ project, image }) => {
 
 CreateLead.prototype = {
   project: PropTypes.object,
-  image: PropTypes.number,
 };
 
 export default CreateLead;

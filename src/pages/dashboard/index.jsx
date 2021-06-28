@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../components/container';
 
 import { fetchProjects } from '../../services/project.service';
-import { selectProjects } from '../../redux/selectors/project.selector';
+import { selectProjects, selectWordFilter } from '../../redux/selectors/project.selector';
 import { fetchProjectsSuccess } from '../../redux/slices/project.slice';
 import ProjectCard from './components/project-card/projectCard';
 
 import './index.scss';
+import { projectWithFilter } from '../../helpers';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
+  const wordFilter = useSelector(selectWordFilter);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Dashboard = () => {
           <>
             <div className='dashboard__container--header'>Recomendados cerca de ti</div>
             <div className='dashboard__container--body'>
-              {projects.map(project => (
+              {projectWithFilter(projects, wordFilter.toUpperCase()).map(project => (
                 <ProjectCard project={project} key={`project-${project.id}`} />
               ))}
             </div>

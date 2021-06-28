@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from '../../../../redux/selectors/user.selector';
@@ -11,6 +11,7 @@ import { AUTH_TOKEN } from '../../../../constants';
 import { LOG_OUT_ICON, MY_PROJECTS_ICON } from '../../../../constants/icons';
 import { PROJECTS_ROUTE } from '../../../../constants/routes';
 import './userMenu.scss';
+import { clearWordFilter } from '../../../../redux/slices/project.slice';
 
 export const FieldsMenu = ({ icon, value }) => {
   return (
@@ -24,6 +25,7 @@ export const FieldsMenu = ({ icon, value }) => {
 const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const history = useHistory();
 
   const logOutUser = () => {
     dispatch(logOut());
@@ -31,11 +33,16 @@ const UserMenu = () => {
     window.location.reload(false);
   };
 
+  const navigate = () => {
+    dispatch(clearWordFilter());
+    history.push(`${PROJECTS_ROUTE}${user.slug}`);
+  };
+
   return (
     <div className='user-menu__container'>
-      <Link to={`${PROJECTS_ROUTE}${user.slug}`} className='link__container'>
+      <div onClick={navigate} className='link__container'>
         <FieldsMenu value='Mis Projectos' icon={MY_PROJECTS_ICON} />
-      </Link>
+      </div>
       <div onClick={logOutUser} className='user-menu__container--logout'>
         <FieldsMenu onClick={logOutUser} value='Cerrar sesión' icon={LOG_OUT_ICON} />
       </div>

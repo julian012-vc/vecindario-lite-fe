@@ -10,15 +10,11 @@ const SelectInput = ({
   formValue,
   errorSelector,
   defaultValue = null,
-  value = null,
 }) => {
   return (
     <div className='select-input__container control has-icons-left'>
       <div className='select is-rounded is-normal'>
-        <select
-          {...register(formValue, { value: !!value ? value[formValue] : defaultValue })}
-          defaultValue={defaultValue}
-        >
+        <select {...register(formValue)} defaultValue={defaultValue}>
           <option value={defaultValue}>{placeholder}</option>
           {options.map(opt => (
             <option value={opt.value} key={opt.id}>

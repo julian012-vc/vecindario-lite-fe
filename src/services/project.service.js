@@ -13,3 +13,11 @@ export async function registerProject(data, userId) {
 export async function updateProject(data, projectId) {
   return putRequest(`${CRUD_PROJECTS}/${projectId}`, data);
 }
+
+export async function fetchProjectBySlug(slug) {
+  return getRequest(`${CRUD_PROJECTS}/${slug}`);
+}
+
+export async function fetchProjectLeadsBySlug(slug) {
+  return getRequest(`${CRUD_PROJECTS}/${slug}/leads`);
+}

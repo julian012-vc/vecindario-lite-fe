@@ -15,20 +15,29 @@ import './App.css';
 import PrivateRoute from './components/private-route/privateRoute';
 import Projects from './pages/projects';
 import ProjectLeads from './pages/project-leads';
+import { getValueFromLocalStorage, removeValueFromLocalStorage } from './helpers';
+import { AUTH_TOKEN } from './constants';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    isLogged()
-      .then(res => {
-        dispatch(setUser(res));
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
+    const token = getValueFromLocalStorage(AUTH_TOKEN);
+    if (token) {
+      isLogged()
+        .then(res => {
+          dispatch(setUser(res));
+          setIsLoading(false);
+        })
+        .catch(() => {
+          removeValueFromLocalStorage(AUTH_TOKEN);
+          window.location.reload(false);
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
+    }
   }, [dispatch]);
 
   return (

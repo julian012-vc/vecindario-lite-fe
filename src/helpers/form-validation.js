@@ -1,13 +1,24 @@
 import * as yup from 'yup';
-// TODO VERIFY EMAIL
-// import EmailValidation from 'emailvalid';
-//
-// const ev = new EmailValidation();
-//
-// yup.addMethod(yup.string, 'isSpamEmail', function (email, msg) {
-//   const result = ev.check(email);
-//   return result.valid;
-// });
+import EmailValidation from 'emailvalid';
+
+const ev = new EmailValidation();
+ev.blacklist('moxkid.com');
+ev.blacklist('nafxo.com');
+ev.blacklist('biyac.com');
+ev.blacklist('firemailbox.club');
+ev.blacklist('greenkic.com');
+
+ev.whitelist('gmail.com');
+ev.whitelist('hotmail.com');
+
+function isSpamEmail(msg) {
+  return yup.string().test('isSpamEmail', msg, function (value) {
+    const result = ev.check(value);
+    return result.valid;
+  });
+}
+
+yup.addMethod(yup.string, 'isSpamEmail', isSpamEmail);
 
 export function validateForm(data, formSchema) {
   const schema = yup.object().shape(formSchema);

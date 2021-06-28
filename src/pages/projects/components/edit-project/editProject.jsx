@@ -24,9 +24,11 @@ import * as Colors from '../../../../constants/colors';
 import { closeModal } from '../../../../redux/slices/modal.slice';
 
 const EditProject = () => {
-  const { register, handleSubmit, control } = useForm();
   const form = useSelector(selectEditProject);
   const project = useSelector(selectProjectToEdit);
+  const { register, handleSubmit, control } = useForm({
+    defaultValues: project,
+  });
   const dispatch = useDispatch();
 
   const onSubmit = async data => {
@@ -70,7 +72,6 @@ const EditProject = () => {
                 icon={Icons.PROJECT_TITLE_ICON}
                 register={register}
                 formValue='title'
-                value={project}
                 errorSelector={form.errors}
               />
 
@@ -82,7 +83,6 @@ const EditProject = () => {
                   register={register}
                   placeholder='Tipo de projecto'
                   options={typeProjectsToArray()}
-                  value={project}
                   defaultValue=''
                 />
                 <div className='input-form__container--wrapper--space' />
@@ -102,7 +102,6 @@ const EditProject = () => {
                 icon={Icons.CITY_PROJECT_ICON}
                 register={register}
                 formValue='city'
-                value={project}
                 errorSelector={form.errors}
               />
               <Input
@@ -110,7 +109,6 @@ const EditProject = () => {
                 icon={Icons.ADDRESS_PROJECT_ICON}
                 register={register}
                 formValue='address'
-                value={project}
                 errorSelector={form.errors}
               />
               <InputNumber
@@ -153,7 +151,6 @@ const EditProject = () => {
                   register={register}
                   placeholder='Tiene subsidio'
                   options={truFalseOptions()}
-                  value={project}
                   defaultValue={false}
                 />
                 <div className='input-form__container--wrapper--space' />
@@ -164,7 +161,6 @@ const EditProject = () => {
                   register={register}
                   placeholder='Tiene parqueadero'
                   options={truFalseOptions()}
-                  value={project}
                   defaultValue={false}
                 />
               </div>
@@ -174,7 +170,6 @@ const EditProject = () => {
                 icon={Icons.EMAIL_ICON}
                 register={register}
                 formValue='email'
-                value={project}
                 errorSelector={form.errors}
               />
 

@@ -1,24 +1,35 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import EditProject from '../edit-project/editProject';
+import Modal from '../../../../components/modal/modal';
+
+import { openModal } from '../../../../redux/slices/modal.slice';
+import {
+  actualProject,
+  cleanEditProject,
+  startEditProject,
+} from '../../../../redux/slices/admin.slice';
+
+import { TYPE_PROJECTS } from '../../../../constants/type-projects';
+import { PROJECT_ROUTE } from '../../../../constants/routes';
 
 import './projectBox.scss';
-import { TYPE_PROJECTS } from '../../../../constants/type-projects';
-import Modal from '../../../../components/modal/modal';
-import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '../../../../redux/slices/modal.slice';
-import EditProject from '../edit-project/editProject';
-import { cleanEditProject, startEditProject } from '../../../../redux/slices/admin.slice';
-import { Link } from 'react-router-dom';
-import { PROJECTS_ROUTE } from '../../../../constants/routes';
-import { selectUser } from '../../../../redux/selectors/user.selector';
 
 const ProjectBox = ({ project }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const history = useHistory();
   const MODAL_ID = `edit-project-${project.id}`;
 
   const openEditProject = () => {
     dispatch(openModal(MODAL_ID));
     dispatch(startEditProject(project));
+  };
+
+  const navigate = () => {
+    dispatch(actualProject(project));
+    history.push(`${PROJECT_ROUTE}${project.slug}`);
   };
 
   return (
@@ -43,12 +54,9 @@ const ProjectBox = ({ project }) => {
         <div className='project-box__container--footer--edit' onClick={openEditProject}>
           Editar
         </div>
-        <Link
-          to={`${PROJECTS_ROUTE}${user.slug}/${project.slug}`}
-          className='project-box__container--footer--lead'
-        >
+        <div className='project-box__container--footer--lead' onClick={navigate}>
           Ver leads
-        </Link>
+        </div>
       </div>
 
       <Modal id={MODAL_ID} onDispatch={cleanEditProject()}>

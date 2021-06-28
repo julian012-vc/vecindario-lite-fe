@@ -37,6 +37,7 @@ const SingUp = () => {
   const errorSelector = useSelector(selectSignUpErrors);
 
   const onSubmit = async data => {
+    console.log(data);
     dispatch(signUp(data));
     if (await isValidForm(data, SIGN_UP_VALIDATION)) {
       createAccount(data)
